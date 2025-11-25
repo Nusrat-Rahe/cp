@@ -1,0 +1,26 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+const long long MOD = 1e9 + 7;
+
+// Simple recursive modular exponentiation
+long long modPow(long long a, long long b) {
+    if(b == 0) return 1;       // a^0 = 1
+    long long res = modPow(a, b / 2);
+    res = (res * res) % MOD;
+    if(b % 2 == 1) res = (res * a) % MOD;
+    return res;
+}
+
+int main() {
+    int n;
+    cin >> n;
+
+    while(n--) {
+        long long a, b;
+        cin >> a >> b;
+        cout << modPow(a % MOD, b) << "\n";
+    }
+
+    return 0;
+}
