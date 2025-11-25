@@ -1,0 +1,27 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+const long long MOD = 1e9 + 7;
+
+pair<long long, long long> fib(long long n) {
+    if(n == 0) return {0, 1};   // (F0, F1)
+
+    auto p = fib(n / 2);
+    long long a = p.first;     // F(k)
+    long long b = p.second;    // F(k+1)
+
+    long long c = (a * ((2*b % MOD - a + MOD) % MOD)) % MOD;   // F(2k)
+    long long d = (a*a % MOD + b*b % MOD) % MOD;               // F(2k+1)
+
+    if(n % 2 == 0)
+        return {c, d};
+    else
+        return {d, (c + d) % MOD};
+}
+
+int main() {
+    long long n;
+    cin >> n;
+    cout << fib(n).first % MOD << endl;
+    return 0;
+}
