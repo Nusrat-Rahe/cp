@@ -1,0 +1,31 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int min_operations(string s) {
+    int n = s.size(), ans = n;
+    for (char c = 'a'; c <= 'z'; c++) {
+        int ops = 0, i = n - 1;
+        while (i >= 0) {
+            if (s[i] != c) {
+                ops++;
+                i -= ops;
+            } else {
+                i--;
+            }
+        }
+        ans = min(ans, ops);
+    }
+    return ans;
+}
+
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        string s;
+        cin >> n >> s;
+        cout << min_operations(s) << "\n";
+    }
+    return 0;
+}
