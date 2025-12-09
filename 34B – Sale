@@ -1,0 +1,22 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+    int n, m;
+    cin >> n >> m;
+
+    int prices[1000];
+    for (int i = 0; i < n; i++) cin >> prices[i];
+
+    sort(prices, prices + n);
+
+    int savings = 0;
+    for (int i = 0; i < m; i++) {
+        if (prices[i] < 0) 
+savings += -prices[i];
+    }
+
+    cout << savings;
+    return 0;
+}
