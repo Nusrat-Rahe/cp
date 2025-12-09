@@ -1,0 +1,12 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int n, h, x, w = 0;
+    cin >> n >> h;
+    while (n--) {
+        cin >> x;
+        w += (x > h ? 2 : 1);
+    }
+    cout << w;
+}
